@@ -83,11 +83,11 @@ namespace NS_Comment.ViewModel
                 AuthorName = UserData[Index].Name;
                 UserComment = UserData[Index].Comment;
             });
-            DoubleClickCommand = new RelayCommand(o =>
+            /*DoubleClickCommand = new RelayCommand(o =>
             {
                 AuthorBox = UserData[Index].Name;
                 UserCommentBox = UserData[Index].Comment;
-            });
+            });*/
         }
     }
 }

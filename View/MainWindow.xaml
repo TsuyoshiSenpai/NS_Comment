@@ -72,10 +72,6 @@
                      ItemsSource="{Binding AuthorName}"
                      SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Width="200">
-                <ListBox.InputBindings>
-                    <MouseBinding MouseAction="LeftDoubleClick" 
-                                  Command="{Binding DoubleClickCommand}"/>
-                </ListBox.InputBindings>
             </ListBox>
         </Expander>
         <Expander HorizontalAlignment="Left" 
@@ -87,10 +83,6 @@
                      ItemsSource="{Binding UserComment}"
                      SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Height="77" Width="198">
-                <ListBox.InputBindings>
-                    <MouseBinding MouseAction="LeftDoubleClick" 
-                                  Command="{Binding DoubleClickCommand}"/>
-                </ListBox.InputBindings>
             </ListBox>
         </Expander>
     </Grid>
