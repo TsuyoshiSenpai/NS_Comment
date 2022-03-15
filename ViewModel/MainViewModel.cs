@@ -1,8 +1,6 @@
-﻿using NS_Comment.Model;
-using NS_Comment.Services;
-using System;
-using System.Windows;
+﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace NS_Comment
 {
