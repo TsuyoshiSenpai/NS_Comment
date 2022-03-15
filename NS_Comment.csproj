@@ -59,7 +59,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\DataBase.cs" />
+    <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Services\Observable.cs" />
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace NS_Comment.Services
+namespace NS_Comment
 {
     internal class Observer : INotifyPropertyChanged
 

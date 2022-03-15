@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace NS_Comment.Services
+namespace NS_Comment
 {
     internal class RelayCommand : ICommand
     {

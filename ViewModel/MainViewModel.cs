@@ -4,12 +4,12 @@ using System;
 using System.Windows;
 using System.Collections.ObjectModel;
 
-namespace NS_Comment.ViewModel
+namespace NS_Comment
 {
     class MainViewModel : Observer
     {
         #region properties
-        public ObservableCollection<DataBase> UserData
+        public ObservableCollection<UserInfo> UserData
         { get; set; }
 
         private int _Index = 0;
@@ -64,7 +64,7 @@ namespace NS_Comment.ViewModel
 
         public MainViewModel()
         {
-            UserData = new ObservableCollection<DataBase>();
+            UserData = new ObservableCollection<UserInfo>();
             CancelCommand = new RelayCommand(o =>
             {
                 foreach (Window window in Application.Current.Windows)
@@ -77,7 +77,7 @@ namespace NS_Comment.ViewModel
             });
             OKCommand = new RelayCommand(o =>
             {
-                UserData.Add(new DataBase() { Name = AuthorBox, Comment = UserCommentBox, Id = Guid.NewGuid() });
+                UserData.Add(new UserInfo() { Name = AuthorBox, Comment = UserCommentBox, Id = Guid.NewGuid() });
                 AuthorBox = null;
                 UserCommentBox = null;
                 AuthorName = UserData[Index].Name;
