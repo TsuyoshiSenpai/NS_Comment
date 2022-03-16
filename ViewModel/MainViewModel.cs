@@ -10,43 +10,43 @@ namespace NS_Comment
         public ObservableCollection<UserInfo> UserData
         { get; set; }
 
-        private int _Index = 0;
+        private int index = 0;
         public int Index
         {
-            get { return _Index; }
-            set { _Index = value; OnPropertyChanged(); }
+            get { return index; }
+            set { index = value; OnPropertyChanged(); }
         }
 
-        private string _AuthorBox;
+        private string authorBox;
 
         public string AuthorBox
         {
-            get { return _AuthorBox; }
-            set { _AuthorBox = value; OnPropertyChanged(); }
+            get { return authorBox; }
+            set { authorBox = value; OnPropertyChanged(); }
         }
 
-        private string _UserCommentBox;
+        private string userCommentBox;
 
         public string UserCommentBox
         {
-            get { return _UserCommentBox; }
-            set { _UserCommentBox = value; OnPropertyChanged(); }
+            get { return userCommentBox; }
+            set { userCommentBox = value; OnPropertyChanged(); }
         }
 
-        private string _AuthorName;
+        private string authorName;
 
         public string AuthorName
         {
-            get { return _AuthorName; }
-            set { _AuthorName = value; OnPropertyChanged(); }
+            get { return authorName; }
+            set { authorName = value; OnPropertyChanged(); }
         }
 
-        private string _UserComment;
+        private string userComment;
 
         public string UserComment
         {
-            get { return _UserComment; }
-            set { _UserComment = value; OnPropertyChanged(); }
+            get { return userComment; }
+            set { userComment = value; OnPropertyChanged(); }
         }
 
 
@@ -56,7 +56,7 @@ namespace NS_Comment
         { get; set; }
         public RelayCommand OKCommand
         { get; set; }
-        public RelayCommand DoubleClickCommand
+        public RelayCommand SelectCommand
         { get; set; }
         #endregion
 
@@ -73,19 +73,26 @@ namespace NS_Comment
                     }
                 }
             });
-            OKCommand = new RelayCommand(o =>
-            {
-                UserData.Add(new UserInfo() { Name = AuthorBox, Comment = UserCommentBox, Id = Guid.NewGuid() });
-                AuthorBox = null;
-                UserCommentBox = null;
-                AuthorName = UserData[Index].Name;
-                UserComment = UserData[Index].Comment;
-            });
-            /*DoubleClickCommand = new RelayCommand(o =>
-            {
-                AuthorBox = UserData[Index].Name;
-                UserCommentBox = UserData[Index].Comment;
-            });*/
+            OKCommand = new RelayCommand(o => OK());
+            SelectCommand = new RelayCommand(o => Select());
+        }
+
+        public void OK()
+        {
+            UserData.Add(new UserInfo() { Name = AuthorBox, Comment = UserCommentBox, Id = Guid.NewGuid() });
+            ClearInfo();
+            AuthorName = UserData[Index].Name;
+            UserComment = UserData[Index].Comment;
+        }
+        public void ClearInfo()
+        {
+            AuthorBox = null;
+            UserCommentBox = null;
+        }
+        public void Select()
+        {
+            AuthorBox = UserData[Index].Name;
+            UserCommentBox = UserData[Index].Comment;
         }
     }
 }
