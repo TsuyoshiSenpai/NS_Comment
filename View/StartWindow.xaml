@@ -1,0 +1,32 @@
+﻿<Window x:Class="NS_Comment.View.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NS_Comment.View"
+        mc:Ignorable="d"
+        Title="StartWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="NEW" 
+                Click="NewMode"
+                HorizontalAlignment="Left" 
+                Margin="279,32,0,0" 
+                VerticalAlignment="Top" 
+                Width="199" 
+                Height="53"/>
+        <Button Content="EDIT" 
+                Click="EditMode"
+                HorizontalAlignment="Left" 
+                Margin="279,119,0,0" 
+                VerticalAlignment="Top" 
+                Width="199" 
+                Height="53"/>
+        <Button Content="READ" 
+                Click="ReadMode"
+                HorizontalAlignment="Left" 
+                Margin="279,213,0,0" 
+                VerticalAlignment="Top" 
+                Width="199" 
+                Height="53"/>
+    </Grid>
+</Window>
