@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NS_Comment" xmlns:vm="clr-namespace:NS_Comment"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
+        MaxHeight="400" MaxWidth="600"
         Title="MainWindow" Height="250" Width="450">
     <Window.DataContext>
         <vm:MainViewModel/>
