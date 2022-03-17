@@ -41,30 +41,6 @@ namespace NS_Comment
             set { if(value != okIsEnabled) okIsEnabled = value; OnPropertyChanged(); }
         }
 
-        private bool cancelIsEnabled;
-
-        public bool CancelIsEnabled
-        {
-            get { return cancelIsEnabled; }
-            set { cancelIsEnabled = value; OnPropertyChanged(); }
-        }
-
-        private bool authorSelectionIsEnabled;
-
-        public bool AuthorSelectionIsEnabled
-        {
-            get { return authorSelectionIsEnabled; }
-            set { authorSelectionIsEnabled = value; OnPropertyChanged(); }
-        }
-
-        private bool commentSelectionIsEnabled;
-
-        public bool CommentSelectionIsEnabled
-        {
-            get { return commentSelectionIsEnabled; }
-            set { commentSelectionIsEnabled = value; OnPropertyChanged(); }
-        }
-
         #endregion
         #region commands
         public RelayCommand CancelCommand
