@@ -14,23 +14,7 @@ namespace NS_Comment
         public int Index
         {
             get { return index; }
-            set { index = value; OnPropertyChanged(); }
-        }
-
-        private string authorBox;
-
-        public string AuthorBox
-        {
-            get { return authorBox; }
-            set { authorBox = value; OnPropertyChanged(); }
-        }
-
-        private string userCommentBox;
-
-        public string UserCommentBox
-        {
-            get { return userCommentBox; }
-            set { userCommentBox = value; OnPropertyChanged(); }
+            set { if(value != index) index = value; OnPropertyChanged(); }
         }
 
         private string authorName;
@@ -38,7 +22,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { authorName = value; OnPropertyChanged(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); }
         }
 
         private string userComment;
@@ -46,7 +30,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { userComment = value; OnPropertyChanged(); }
+            set { if(value != userComment) userComment = value; OnPropertyChanged(); }
         }
 
 
@@ -63,36 +47,31 @@ namespace NS_Comment
         public MainViewModel()
         {
             UserData = new ObservableCollection<UserInfo>();
-            CancelCommand = new RelayCommand(o =>
-            {
-                foreach (Window window in Application.Current.Windows)
-                {
-                    if (window.Title == "MainWindow")
-                    {
-                        window.Close();
-                    }
-                }
-            });
+            CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
             SelectCommand = new RelayCommand(o => Select());
         }
 
         public void OK()
         {
-            UserData.Add(new UserInfo() { Name = AuthorBox, Comment = UserCommentBox, Id = Guid.NewGuid() });
-            ClearInfo();
+            UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
             AuthorName = UserData[Index].Name;
             UserComment = UserData[Index].Comment;
         }
-        public void ClearInfo()
-        {
-            AuthorBox = null;
-            UserCommentBox = null;
-        }
         public void Select()
         {
-            AuthorBox = UserData[Index].Name;
-            UserCommentBox = UserData[Index].Comment;
+            AuthorName = UserData[Index].Name;
+            UserComment = UserData[Index].Comment;
+        }
+        public void Cancel()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title == "MainWindow")
+                {
+                    window.Close();
+                }
+            }
         }
     }
 }

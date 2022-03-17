@@ -15,7 +15,7 @@
                     Height="20" VerticalAlignment="Top" 
                     Width="444" Margin="0,25,0,0">
             <TextBox Height="20" TextWrapping="Wrap"
-                     Text="{Binding AuthorBox, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Margin="5,0,39,0"
                      Width="400"
                      FontSize="12"/>
@@ -38,7 +38,7 @@
                     Width="444">
             <TextBox Height="100" TextWrapping="Wrap"
                      HorizontalAlignment="Left"
-                     Text="{Binding UserCommentBox,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Width="400"
                      Margin="5,0,0,0"/>
         </StackPanel>

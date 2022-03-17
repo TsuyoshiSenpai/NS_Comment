@@ -9,7 +9,7 @@ namespace NS_Comment
         public string Name
         {
             get { return name; }
-            set { name = value; OnPropertyChanged(); }
+            set { if(value != name) name = value; OnPropertyChanged(); }
         }
 
         private string comment;
@@ -17,7 +17,7 @@ namespace NS_Comment
         public string Comment
         {
             get { return comment; }
-            set { comment = value; OnPropertyChanged(); }
+            set { if(value != comment) comment = value; OnPropertyChanged(); }
         }
 
         private Guid id;
@@ -25,7 +25,7 @@ namespace NS_Comment
         public Guid Id
         {
             get { return id; }
-            set { id = value; }
+            set { if(value != id) id = value; }
         }
 
     }
