@@ -34,14 +34,6 @@ namespace NS_Comment
             set { if(value != userComment) userComment = value; OnPropertyChanged(); }
         }
 
-        private bool okIsEnabled;
-
-        public bool OkIsenabled
-        {
-            get { return okIsEnabled; }
-            set { if(value != okIsEnabled) okIsEnabled = value; OnPropertyChanged(); }
-        }
-
         #endregion
         #region commands
         public RelayCommand CancelCommand
