@@ -6,18 +6,32 @@
         xmlns:local="clr-namespace:NS_Comment" xmlns:vm="clr-namespace:NS_Comment"
         mc:Ignorable="d"
         MaxHeight="400" MaxWidth="600"
+        MinHeight="250" MinWidth="450"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="250" Width="450">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" 
+                    Grid.Row="0"
+                    Grid.Column="0"
                     Height="20" VerticalAlignment="Top" 
                     Width="444" Margin="0,25,0,0">
             <TextBox Height="20" TextWrapping="Wrap"
+                     Grid.Row="0"
+                     Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Margin="5,0,39,0"
-                     Width="400"
+                     Width="380"
                      FontSize="12"/>
             <Grid Background="#FFE5E5E5" Margin="0,0,346,0"/>
         </StackPanel>
@@ -27,66 +41,49 @@
                HorizontalContentAlignment="Left"
                FontSize="12" VerticalAlignment="Top" Height="25" Width="123"/>
         <Label Content="Комментарий:" HorizontalAlignment="Left" 
+               Grid.Row="1"
+               Grid.Column="0"
             VerticalContentAlignment="Top"
-            Margin="10,45,0,0"
+            Margin="10,0,0,0"
             HorizontalContentAlignment="Left"
             FontSize="12" VerticalAlignment="Top" Height="25" Width="123"/>
         <StackPanel HorizontalAlignment="Left" 
+                    Grid.Row="1"
+                    Grid.Column="0"
                     Height="100" 
-                    Margin="0,75,0,0" 
+                    Margin="5,30,0,0" 
                     VerticalAlignment="Top" 
-                    Width="444">
+                    Width="400">
             <TextBox Height="100" TextWrapping="Wrap"
+                     Grid.Row="1"
+                     Grid.Column="0"
                      HorizontalAlignment="Left"
                      Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Width="400"
-                     Margin="5,0,0,0"/>
-        </StackPanel>
+                     Width="380"
+                     Margin="10,0,0,0"/>
+            </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
+                    Grid.Row="1"
+                    Grid.Column="0"
                     VerticalAlignment="Bottom"
                     Height="30" 
                     FlowDirection="LeftToRight"
                     Orientation="Horizontal"
-                    Margin="5,0,0,5" 
+                    Margin="-20,0,0,0" 
                     Width="430">
             <Button Content="Отмена"
                     Height="25"
                     Command="{Binding CancelCommand}"
-                    Margin="340,0,0,0"
+                    Margin="330,0,0,0"
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="ОК"
                     IsEnabled="{Binding OkIsEnabled}"
                     Command="{Binding OKCommand}"
                     Height="25"
-                    Margin="-250,0,0,0"
+                    Margin="-260,0,0,0"
                     VerticalAlignment="Center"
                     Width="80"/>
         </StackPanel>
-        <Expander HorizontalAlignment="Left" 
-                  ExpandDirection="Right"
-                  Height="100" Margin="419,0,-177,0"
-                  IsExpanded="False"
-                  VerticalAlignment="Top" 
-                  Width="200">
-            <ListBox HorizontalAlignment="Left"
-                     Height="77" Margin="0,0,-2,0" 
-                     ItemsSource="{Binding AuthorName}"
-                     SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Width="200">
-            </ListBox>
-        </Expander>
-        <Expander HorizontalAlignment="Left" 
-                  ExpandDirection="Right"
-                  Height="100" 
-                  Margin="96,45,0,0" 
-                  VerticalAlignment="Top" 
-                  Width="200" IsExpanded="False">
-            <ListBox HorizontalAlignment="Left" 
-                     ItemsSource="{Binding UserComment}"
-                     SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Height="77" Width="198">
-            </ListBox>
-        </Expander>
     </Grid>
 </Window>

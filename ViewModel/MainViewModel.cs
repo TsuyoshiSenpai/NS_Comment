@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -58,7 +59,6 @@ namespace NS_Comment
             OKCommand = new RelayCommand(o => OK());
             SelectCommand = new RelayCommand(o => Select());
         }
-
         public void OK()
         {
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
@@ -79,11 +79,6 @@ namespace NS_Comment
                     window.Close();
                 }
             }
-        }
-        public void Clear()
-        {
-            AuthorName = null;
-            UserComment = null;
         }
     }
 }
