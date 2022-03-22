@@ -61,7 +61,7 @@
                      Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Width="380"
                      Margin="10,0,0,0"/>
-            </StackPanel>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
                     Grid.Row="1"
                     Grid.Column="0"
@@ -84,5 +84,14 @@
                     VerticalAlignment="Center"
                     Width="80"/>
         </StackPanel>
+        <Button Content=">"
+                Command="{Binding AuthorsListCommand}"
+                HorizontalAlignment="Left" 
+                Margin="10,20,0,0" 
+                VerticalAlignment="Top" 
+                Width="22" 
+                Grid.Row="0"
+                Grid.Column="1" 
+                Height="20"/>
     </Grid>
 </Window>

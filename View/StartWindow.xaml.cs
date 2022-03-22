@@ -22,12 +22,18 @@ namespace NS_Comment.View
 
         private void EditMode(object sender, RoutedEventArgs e)
         {
-            
+            EditWindow editWindow = new EditWindow();
+            editWindow.Owner = Application.Current.MainWindow;
+            editWindow.Show();
+            Application.Current.MainWindow.Hide();
         }
 
         private void ReadMode(object sender, RoutedEventArgs e)
         {
-            
+            ReadOnlyWindow readOnlyWindow = new ReadOnlyWindow();
+            readOnlyWindow.Owner = Application.Current.MainWindow;
+            readOnlyWindow.Show();
+            Application.Current.MainWindow.Hide();
         }
     }
 }

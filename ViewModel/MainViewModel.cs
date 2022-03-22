@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using NS_Comment.View;
 
 namespace NS_Comment
 {
@@ -40,7 +41,7 @@ namespace NS_Comment
         { get; set; }
         public RelayCommand OKCommand
         { get; set; }
-        public RelayCommand SelectCommand
+        public RelayCommand AuthorsListCommand
         { get; set; }
         #endregion
 
@@ -49,16 +50,11 @@ namespace NS_Comment
             UserData = new ObservableCollection<UserInfo>();
             CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
-            SelectCommand = new RelayCommand(o => Select());
+            AuthorsListCommand = new RelayCommand(o => AuthorList());
         }
         public void OK()
         {
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
-            AuthorName = UserData[Index].Name;
-            UserComment = UserData[Index].Comment;
-        }
-        public void Select()
-        {
             AuthorName = UserData[Index].Name;
             UserComment = UserData[Index].Comment;
         }
@@ -71,6 +67,13 @@ namespace NS_Comment
                     window.Close();
                 }
             }
+        }
+        public void AuthorList()
+        {
+            AuthorsListWindow authorsListWindow = new AuthorsListWindow();
+            authorsListWindow.Owner = Application.Current.MainWindow;
+            authorsListWindow.Show();
+            Application.Current.MainWindow.Hide();
         }
     }
 }

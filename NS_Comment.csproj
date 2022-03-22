@@ -63,8 +63,17 @@
     <Compile Include="Services\Observable.cs" />
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\AuthorsListWindow.xaml.cs">
+      <DependentUpon>AuthorsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindow.xaml.cs">
+      <DependentUpon>EditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReadOnlyWindow.xaml.cs">
+      <DependentUpon>ReadOnlyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
@@ -97,7 +106,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\AuthorsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReadOnlyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
