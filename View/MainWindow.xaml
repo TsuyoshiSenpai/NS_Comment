@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NS_Comment" xmlns:vm="clr-namespace:NS_Comment"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         MaxHeight="400" MaxWidth="600"
         MinHeight="250" MinWidth="450"
@@ -84,14 +85,27 @@
                     VerticalAlignment="Center"
                     Width="80"/>
         </StackPanel>
-        <Button Content=">"
-                Command="{Binding AuthorsListCommand}"
-                HorizontalAlignment="Left" 
-                Margin="10,20,0,0" 
-                VerticalAlignment="Top" 
-                Width="22" 
-                Grid.Row="0"
-                Grid.Column="1" 
-                Height="20"/>
+        <Expander IsExpanded="False"
+                  Grid.Row="0"
+                  HorizontalAlignment="Left" 
+                  Height="85" 
+                  Margin="133,0,0,0" 
+                  Grid.RowSpan="2" 
+                  VerticalAlignment="Top" 
+                  Width="259">
+            <ListBox HorizontalAlignment="Left" 
+                     Height="85" 
+                     Width="259" Margin="0,0,-2,0"/>
+        </Expander>
+        <Expander Grid.Column="0"
+                  IsExpanded="False"
+                  Grid.Row="1"
+                  HorizontalAlignment="Left" 
+                  Height="129" 
+                  Margin="97,0,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="295">
+            <Grid Background="#FFE5E5E5"/>
+        </Expander>
     </Grid>
 </Window>

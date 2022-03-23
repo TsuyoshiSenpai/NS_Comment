@@ -17,9 +17,9 @@
         <Button Content="EDIT" 
                 Click="EditMode"
                 HorizontalAlignment="Left" 
-                Margin="279,119,0,0" 
-                VerticalAlignment="Top" 
-                Width="199" 
+                Margin="279,119,0,0"
+                VerticalAlignment="Top"
+                Width="199"
                 Height="53"/>
         <Button Content="READ" 
                 Click="ReadMode"
