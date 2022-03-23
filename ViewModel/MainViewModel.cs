@@ -41,8 +41,6 @@ namespace NS_Comment
         { get; set; }
         public RelayCommand OKCommand
         { get; set; }
-        public RelayCommand AuthorsListCommand
-        { get; set; }
         #endregion
 
         public MainViewModel()
@@ -50,7 +48,6 @@ namespace NS_Comment
             UserData = new ObservableCollection<UserInfo>();
             CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
-            AuthorsListCommand = new RelayCommand(o => AuthorList());
         }
         public void OK()
         {
@@ -67,13 +64,6 @@ namespace NS_Comment
                     window.Close();
                 }
             }
-        }
-        public void AuthorList()
-        {
-            AuthorsListWindow authorsListWindow = new AuthorsListWindow();
-            authorsListWindow.Owner = Application.Current.MainWindow;
-            authorsListWindow.Show();
-            Application.Current.MainWindow.Hide();
         }
     }
 }
