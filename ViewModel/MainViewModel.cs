@@ -40,15 +40,6 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
-        private bool isEnabled = false;
-
-        public bool IsEnabled
-        {
-            get { return isEnabled; }
-            set { isEnabled = value; OnPropertyChanged(); }
-        }
-
-
         #endregion
         #region commands
         public RelayCommand CancelCommand
