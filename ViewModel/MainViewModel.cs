@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using NS_Comment.View;
 
@@ -32,12 +33,21 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if(value != userComment) userComment = value; OnPropertyChanged(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); }
         }
         public List<string> Authors
         { get; set; }
         public List<string> UserComments 
         { get; set; }
+
+        private bool isEnabled = false;
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { isEnabled = value; OnPropertyChanged(); }
+        }
+
 
         #endregion
         #region commands

@@ -56,6 +56,7 @@
                     VerticalAlignment="Top" 
                     Width="400">
             <TextBox Height="100" TextWrapping="Wrap"
+                     AcceptsReturn="True"
                      Grid.Row="1"
                      Grid.Column="0"
                      HorizontalAlignment="Left"
@@ -80,6 +81,7 @@
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="ОК"
+                    IsEnabled="{Binding IsEnabled}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="25"
