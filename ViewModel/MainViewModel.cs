@@ -67,7 +67,7 @@ namespace NS_Comment
             {
                 if (window.Title == "MainWindow")
                 {
-                    window.Close();
+                    window.DialogResult = false;
                 }
             }
         }
