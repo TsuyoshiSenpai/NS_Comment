@@ -34,6 +34,10 @@ namespace NS_Comment
             get { return userComment; }
             set { if(value != userComment) userComment = value; OnPropertyChanged(); }
         }
+        public List<string> Authors
+        { get; set; }
+        public List<string> UserComments 
+        { get; set; }
 
         #endregion
         #region commands
@@ -46,14 +50,16 @@ namespace NS_Comment
         public MainViewModel()
         {
             UserData = new ObservableCollection<UserInfo>();
+            Authors = new List<string> { };
+            UserComments = new List<string> { };
             CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
         }
         public void OK()
         {
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
-            AuthorName = UserData[Index].Name;
-            UserComment = UserData[Index].Comment;
+            Authors.Add(UserData[Index].Name);
+            UserComments.Add(UserData[Index].Comment);
         }
         public void Cancel()
         {

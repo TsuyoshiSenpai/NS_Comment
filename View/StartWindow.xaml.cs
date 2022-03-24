@@ -16,7 +16,7 @@ namespace NS_Comment.View
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Owner = Application.Current.MainWindow;
-            mainWindow.Show();
+            mainWindow.ShowDialog();
             Application.Current.MainWindow.Hide();
         }
 

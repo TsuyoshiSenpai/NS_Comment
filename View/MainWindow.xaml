@@ -73,12 +73,14 @@
                     Margin="-20,0,0,0" 
                     Width="430">
             <Button Content="Отмена"
+                    IsCancel="True"
                     Height="25"
                     Command="{Binding CancelCommand}"
                     Margin="330,0,0,0"
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="ОК"
+                    IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="25"
                     Margin="-260,0,0,0"
@@ -94,6 +96,8 @@
                   VerticalAlignment="Top" 
                   Width="259">
             <ListBox HorizontalAlignment="Left" 
+                     SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     ItemsSource="{Binding Authors, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Height="59" 
                      Width="249"/>
         </Expander>
@@ -105,7 +109,11 @@
                   Margin="97,0,0,0" 
                   VerticalAlignment="Top" 
                   Width="295">
-            <ListBox HorizontalAlignment="Left" Height="100" Width="285"/>
+            <ListBox HorizontalAlignment="Left" 
+                     SelectedIndex ="{Binding Index, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     ItemsSource="{Binding UserComments, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Height="100" 
+                     Width="285"/>
         </Expander>
     </Grid>
 </Window>
