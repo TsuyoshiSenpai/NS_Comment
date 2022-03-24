@@ -81,7 +81,6 @@
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="ОК"
-                    IsEnabled="{Binding IsEnabled}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="25"
