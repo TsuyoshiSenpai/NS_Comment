@@ -45,6 +45,10 @@ namespace NS_Comment
         { get; set; }
         public RelayCommand OKCommand
         { get; set; }
+        public RelayCommand AuthorSelectCommand
+        { get; set; }
+        public RelayCommand CommentSelectCommand
+        { get; set; }
         #endregion
 
         public MainViewModel()
@@ -54,6 +58,8 @@ namespace NS_Comment
             UserComments = new List<string> { };
             CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
+            AuthorSelectCommand = new RelayCommand(o => Select("author"));
+            CommentSelectCommand = new RelayCommand(o => Select("comment"));
         }
         public void OK()
         {
@@ -69,6 +75,17 @@ namespace NS_Comment
                 {
                     window.DialogResult = false;
                 }
+            }
+        }
+        public void Select(string SelectType)
+        {
+            if(SelectType == "author")
+            {
+                AuthorName = Authors[Index];
+            } 
+            else if (SelectType == "comment")
+            {
+                UserComment = UserComments[Index];
             }
         }
     }

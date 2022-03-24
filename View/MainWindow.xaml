@@ -99,7 +99,13 @@
                      SelectedIndex="{Binding Index,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Height="59" 
-                     Width="249"/>
+                     Width="249">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
         </Expander>
         <Expander Grid.Column="0"
                   IsExpanded="False"
@@ -113,7 +119,13 @@
                      SelectedIndex ="{Binding Index, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Height="100" 
-                     Width="285"/>
+                     Width="285">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
         </Expander>
     </Grid>
 </Window>
