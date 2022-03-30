@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using NS_Comment;
 
 namespace NS_Comment.View
 {

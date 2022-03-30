@@ -81,6 +81,7 @@
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="ОК"
+                    IsEnabled="{Binding OkIsEnabled,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="25"
@@ -128,5 +129,14 @@
                 </i:Interaction.Triggers>
             </ListBox>
         </Expander>
+        <Border BorderBrush="Black" 
+                BorderThickness="1" 
+                Grid.Column="1" 
+                Visibility="Hidden"
+                Grid.Row="0"
+                HorizontalAlignment="Left" 
+                Height="55" 
+                VerticalAlignment="Top" 
+                Width="40"/>
     </Grid>
 </Window>

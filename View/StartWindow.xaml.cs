@@ -11,23 +11,5 @@ namespace NS_Comment.View
         {
             InitializeComponent();
         }
-
-        private void NewMode(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Owner = Application.Current.MainWindow;
-            mainWindow.ShowDialog();
-            Application.Current.MainWindow.Hide();
-        }
-
-        private void EditMode(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ReadMode(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

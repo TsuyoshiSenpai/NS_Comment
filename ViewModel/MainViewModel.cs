@@ -1,9 +1,8 @@
-﻿using System;
+﻿using NS_Comment.View;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
 using System.Windows;
-using NS_Comment.View;
 
 namespace NS_Comment
 {
@@ -40,6 +39,15 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
+        private bool okIsEnabled;
+
+        public bool OkIsEnabled
+        {
+            get { return okIsEnabled; }
+            set { okIsEnabled = value; OnPropertyChanged(); }
+        }
+
+
         #endregion
         #region commands
         public RelayCommand CancelCommand
@@ -49,6 +57,12 @@ namespace NS_Comment
         public RelayCommand AuthorSelectCommand
         { get; set; }
         public RelayCommand CommentSelectCommand
+        { get; set; }
+        public RelayCommand CreateNewUserCommand
+        { get; set; }
+        public RelayCommand EditUserInfoCommand
+        { get; set; }
+        public RelayCommand ReadUserInfoCommand
         { get; set; }
         #endregion
 
@@ -61,12 +75,22 @@ namespace NS_Comment
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select("author"));
             CommentSelectCommand = new RelayCommand(o => Select("comment"));
+            CreateNewUserCommand = new RelayCommand(o => SelectedMode("new"));
+            EditUserInfoCommand = new RelayCommand(o => SelectedMode("edit"));
+            ReadUserInfoCommand = new RelayCommand(o => SelectedMode("read"));
         }
         public void OK()
         {
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
             Authors.Add(UserData[Index].Name);
             UserComments.Add(UserData[Index].Comment);
+            /*foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title == "MainWindow")
+                {
+                    window.DialogResult = true;
+                }
+            }*/
         }
         public void Cancel()
         {
@@ -87,6 +111,30 @@ namespace NS_Comment
             else if (SelectType == "comment")
             {
                 UserComment = UserComments[Index];
+            }
+        }
+        public void SelectedMode(string Mode)
+        {
+            if (Mode == "new")
+            {
+                OkIsEnabled = true;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Owner = Application.Current.MainWindow;
+                mainWindow.ShowDialog();
+            }
+            else if (Mode == "edit")
+            {
+                OkIsEnabled = true;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Owner = Application.Current.MainWindow;
+                mainWindow.ShowDialog();
+            }
+            else if (Mode == "read")
+            {
+                OkIsEnabled = true;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Owner = Application.Current.MainWindow;
+                mainWindow.ShowDialog();
             }
         }
     }
