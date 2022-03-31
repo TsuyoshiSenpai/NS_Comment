@@ -75,9 +75,9 @@ namespace NS_Comment
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select("author"));
             CommentSelectCommand = new RelayCommand(o => Select("comment"));
-            CreateNewUserCommand = new RelayCommand(o => SelectedMode("new"));
-            EditUserInfoCommand = new RelayCommand(o => SelectedMode("edit"));
-            ReadUserInfoCommand = new RelayCommand(o => SelectedMode("read"));
+            CreateNewUserCommand = new RelayCommand(o => SelectMode("new"));
+            EditUserInfoCommand = new RelayCommand(o => SelectMode("edit"));
+            ReadUserInfoCommand = new RelayCommand(o => SelectMode("read"));
         }
         public void OK()
         {
@@ -113,8 +113,9 @@ namespace NS_Comment
                 UserComment = UserComments[Index];
             }
         }
-        public void SelectedMode(string Mode)
+        public void SelectMode(string Mode)
         {
+            OkIsEnabled = true;
             if (Mode == "new")
             {
                 OkIsEnabled = true;
