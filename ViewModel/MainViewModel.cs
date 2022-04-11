@@ -39,7 +39,7 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
-        private bool okIsEnabled;
+        private bool okIsEnabled = true;
 
         public bool OkIsEnabled
         {
@@ -66,6 +66,19 @@ namespace NS_Comment
         { get; set; }
         #endregion
 
+        public enum Mode
+        {
+            New,
+            Edit,
+            Read
+        }
+
+        public enum Reciever
+        {
+            Author,
+            Comment
+        }
+
         public MainViewModel()
         {
             UserData = new ObservableCollection<UserInfo>();
@@ -73,11 +86,11 @@ namespace NS_Comment
             UserComments = new List<string> { };
             CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
-            AuthorSelectCommand = new RelayCommand(o => Select("author"));
-            CommentSelectCommand = new RelayCommand(o => Select("comment"));
-            CreateNewUserCommand = new RelayCommand(o => SelectMode("new"));
-            EditUserInfoCommand = new RelayCommand(o => SelectMode("edit"));
-            ReadUserInfoCommand = new RelayCommand(o => SelectMode("read"));
+            AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
+            CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
+            CreateNewUserCommand = new RelayCommand(o => SelectMode(Mode.New));
+            EditUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Edit));
+            ReadUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Read));
         }
         public void OK()
         {
@@ -102,35 +115,35 @@ namespace NS_Comment
                 }
             }
         }
-        public void Select(string SelectType)
+        public void Select(Reciever reciever)
         {
-            if(SelectType == "author")
+            if(reciever == Reciever.Author)
             {
                 AuthorName = Authors[Index];
             } 
-            else if (SelectType == "comment")
+            else if (reciever == Reciever.Comment)
             {
                 UserComment = UserComments[Index];
             }
         }
-        public void SelectMode(string Mode)
+        public void SelectMode(Mode mode)
         {
             OkIsEnabled = true;
-            if (Mode == "new")
+            if (mode == Mode.New)
             {
                 OkIsEnabled = true;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Owner = Application.Current.MainWindow;
                 mainWindow.ShowDialog();
             }
-            else if (Mode == "edit")
+            else if (mode == Mode.Edit)
             {
                 OkIsEnabled = true;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Owner = Application.Current.MainWindow;
                 mainWindow.ShowDialog();
             }
-            else if (Mode == "read")
+            else if (mode == Mode.Read)
             {
                 OkIsEnabled = true;
                 MainWindow mainWindow = new MainWindow();
