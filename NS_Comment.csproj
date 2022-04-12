@@ -66,6 +66,9 @@
     <Compile Include="Services\Observable.cs" />
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\CommentWindow.xaml.cs">
+      <DependentUpon>CommentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\CommentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -38,7 +38,7 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
-        private bool okIsEnabled = true;
+        private bool okIsEnabled;
 
         public bool OkIsEnabled
         {
