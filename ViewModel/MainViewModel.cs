@@ -130,10 +130,9 @@ namespace NS_Comment
             OkIsEnabled = true;
             if (mode == Mode.New)
             {
-                OkIsEnabled = true;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Owner = Application.Current.MainWindow;
-                mainWindow.ShowDialog();
+                CommentWindow commentWindow = new CommentWindow();
+                commentWindow.Owner = Application.Current.MainWindow;
+                commentWindow.ShowDialog();
             }
             else if (mode == Mode.Edit)
             {

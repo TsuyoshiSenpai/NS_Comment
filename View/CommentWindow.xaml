@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NS_Comment"
+        xmlns:local="clr-namespace:NS_Comment" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        MinHeight="400" MinWidth="800"
+        MinHeight="400" MinWidth="900"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         Title="CommentWindow">
@@ -16,8 +16,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" 
                     Height="165" 
@@ -25,31 +25,108 @@
                     Grid.Row="0"
                     Margin="10,10,0,0" 
                     VerticalAlignment="Top" 
-                    Width="420"/>
+                    Width="420">
+            <Label Content="Автор комментария:"
+               HorizontalAlignment="Left" 
+               VerticalContentAlignment="Top"
+               Margin="10,0,0,0"
+               HorizontalContentAlignment="Left"
+               FontSize="12" VerticalAlignment="Top" Height="25" Width="123"/>
+            <TextBox Height="20" TextWrapping="Wrap"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Margin="5,0,39,0"
+                     Width="360"
+                     FontSize="12"/>
+        </StackPanel>
         <StackPanel Grid.Column="1" 
                     HorizontalAlignment="Left" 
                     Height="165" 
                     Margin="10,10,0,0" 
                     VerticalAlignment="Top" 
-                    Width="156"/>
+                    Width="156">
+            <ListBox HorizontalAlignment="Left" 
+                     SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Height="162" 
+                     Width="136" Margin="10,0,0,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </StackPanel>
         <StackPanel Grid.Column="2" 
                     HorizontalAlignment="Left" 
                     Height="165" 
                     Margin="10,10,0,0" 
                     VerticalAlignment="Top" 
-                    Width="156"/>
+                    Width="156">
+            <ListBox HorizontalAlignment="Left" 
+                     SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Height="163" 
+                     Width="136" Margin="10,0,0,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
                     Height="130" 
                     Margin="10,10,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
-                    Width="420"/>
+                    Width="420">
+            <Label Content="Комментарий:" 
+               HorizontalAlignment="Left" 
+               Grid.Row="1"
+               Grid.Column="0"
+               VerticalContentAlignment="Top"
+               Margin="10,0,0,0"
+               HorizontalContentAlignment="Left"
+               FontSize="12" 
+               VerticalAlignment="Top" 
+               Height="25" 
+               Width="123"/>
+            <TextBox Height="100" 
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 HorizontalAlignment="Left"
+                 Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 Width="380"
+                 Margin="10,0,0,0"/>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
                     Height="30" 
+                    Orientation="Horizontal"
+                    FlowDirection="LeftToRight"
                     Margin="10,144,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
                     Width="772" 
-                    Grid.ColumnSpan="3"/>
+                    Grid.ColumnSpan="3">
+            <Button Content="ОК"
+                    IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    IsDefault="True"
+                    Command="{Binding OKCommand}"
+                    Height="26"
+                    Margin="210,0,0,0"
+                    VerticalAlignment="Center"
+                    Width="80"/>
+            <Button Content="Отмена"
+                    IsCancel="True"
+                    Height="26"
+                    Command="{Binding CancelCommand}"
+                    VerticalAlignment="Center"
+                    Width="80" 
+                    Margin="20,0,0,0"/>
+        </StackPanel>
     </Grid>
 </Window>
