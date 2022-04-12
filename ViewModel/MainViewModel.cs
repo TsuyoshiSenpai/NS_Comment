@@ -49,8 +49,6 @@ namespace NS_Comment
 
         #endregion
         #region commands
-        public RelayCommand CancelCommand
-        { get; set; }
         public RelayCommand OKCommand
         { get; set; }
         public RelayCommand AuthorSelectCommand
@@ -83,7 +81,6 @@ namespace NS_Comment
             UserData = new ObservableCollection<UserInfo>();
             Authors = new List<string> { };
             UserComments = new List<string> { };
-            CancelCommand = new RelayCommand(o => Cancel());
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
             CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
@@ -103,16 +100,6 @@ namespace NS_Comment
                     window.DialogResult = true;
                 }
             }*/
-        }
-        public void Cancel()
-        {
-            foreach (Window window in Application.Current.Windows)
-            {
-                if (window.Title == "MainWindow")
-                {
-                    window.DialogResult = false;
-                }
-            }
         }
         public void Select(Reciever reciever)
         {

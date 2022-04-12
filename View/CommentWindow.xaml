@@ -121,9 +121,10 @@
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="Отмена"
+                    Name="CancelButton"
                     IsCancel="True"
                     Height="26"
-                    Command="{Binding CancelCommand}"
+                    Click="CancelButton_Click"
                     VerticalAlignment="Center"
                     Width="80" 
                     Margin="20,0,0,0"/>
