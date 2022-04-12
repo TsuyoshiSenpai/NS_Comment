@@ -2,7 +2,7 @@
 
 namespace NS_Comment
 {
-    class UserInfo : Observer
+    public class UserInfo : Observer
     {
         private string name;
 

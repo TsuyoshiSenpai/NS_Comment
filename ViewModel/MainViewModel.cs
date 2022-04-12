@@ -1,12 +1,11 @@
-﻿using NS_Comment.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace NS_Comment
 {
-    class MainViewModel : Observer
+    public class MainViewModel : Observer
     {
         #region properties
         public ObservableCollection<UserInfo> UserData

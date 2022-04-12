@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace NS_Comment.View
+namespace NS_Comment
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

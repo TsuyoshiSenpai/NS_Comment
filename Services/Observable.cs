@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace NS_Comment
 {
-    internal class Observer : INotifyPropertyChanged
+    public class Observer : INotifyPropertyChanged
 
     {
         public event PropertyChangedEventHandler PropertyChanged;
