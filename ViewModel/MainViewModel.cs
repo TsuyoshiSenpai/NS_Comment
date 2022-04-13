@@ -38,7 +38,7 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
-        private bool okIsEnabled;
+        private bool okIsEnabled = true;
 
         public bool OkIsEnabled
         {
@@ -93,13 +93,6 @@ namespace NS_Comment
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
             Authors.Add(UserData[Index].Name);
             UserComments.Add(UserData[Index].Comment);
-            /*foreach (Window window in Application.Current.Windows)
-            {
-                if (window.Title == "MainWindow")
-                {
-                    window.DialogResult = true;
-                }
-            }*/
         }
         public void Select(Reciever reciever)
         {
@@ -117,23 +110,23 @@ namespace NS_Comment
             OkIsEnabled = true;
             if (mode == Mode.New)
             {
-                CommentWindow commentWindow = new CommentWindow();
+                CommentWindow commentWindow = new CommentWindow(this);
                 commentWindow.Owner = Application.Current.MainWindow;
                 commentWindow.ShowDialog();
             }
             else if (mode == Mode.Edit)
             {
-                OkIsEnabled = true;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Owner = Application.Current.MainWindow;
-                mainWindow.ShowDialog();
+                OkIsEnabled = false;
+                CommentWindow commentWindow = new CommentWindow(this);
+                commentWindow.Owner = Application.Current.MainWindow;
+                commentWindow.ShowDialog();
             }
             else if (mode == Mode.Read)
             {
                 OkIsEnabled = true;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Owner = Application.Current.MainWindow;
-                mainWindow.ShowDialog();
+                CommentWindow commentWindow = new CommentWindow(this);
+                commentWindow.Owner = Application.Current.MainWindow;
+                commentWindow.ShowDialog();
             }
         }
     }

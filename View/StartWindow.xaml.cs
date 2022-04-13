@@ -11,5 +11,9 @@ namespace NS_Comment
         {
             InitializeComponent();
         }
+        public StartWindow(MainViewModel model) : this()
+        {
+            this.DataContext = model;
+        }
     }
 }
