@@ -21,16 +21,12 @@ namespace NS_Comment
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            CommentWindow commentWindow = new CommentWindow();
-            commentWindow.Owner = Application.Current.MainWindow;
-            commentWindow.ShowDialog();
+            
         }
 
         private void ReadButton_Click(object sender, RoutedEventArgs e)
         {
-            CommentWindow commentWindow = new CommentWindow();
-            commentWindow.Owner = Application.Current.MainWindow;
-            commentWindow.ShowDialog();
+            
         }
     }
 }
