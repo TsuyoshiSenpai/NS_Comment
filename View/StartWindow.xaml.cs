@@ -22,12 +22,18 @@ namespace NS_Comment
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainViewModel mainViewModel = new MainViewModel(MainViewModel.Mode.Edit);
+            CommentWindow commentWindow = new CommentWindow(mainViewModel);
+            commentWindow.Owner = Application.Current.MainWindow;
+            commentWindow.ShowDialog();
         }
 
         private void ReadButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainViewModel mainViewModel = new MainViewModel(MainViewModel.Mode.Read);
+            CommentWindow commentWindow = new CommentWindow(mainViewModel);
+            commentWindow.Owner = Application.Current.MainWindow;
+            commentWindow.ShowDialog();
         }
     }
 }
