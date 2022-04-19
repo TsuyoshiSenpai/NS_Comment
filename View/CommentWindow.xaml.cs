@@ -10,7 +10,6 @@ namespace NS_Comment
         public CommentWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -20,6 +19,7 @@ namespace NS_Comment
 
         public CommentWindow(MainViewModel model) : this()
         {
+            InitializeComponent();
             this.DataContext = model;
         }
     }

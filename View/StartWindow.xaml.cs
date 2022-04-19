@@ -14,7 +14,8 @@ namespace NS_Comment
 
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-            CommentWindow commentWindow = new CommentWindow();
+            MainViewModel mainViewModel = new MainViewModel(MainViewModel.Mode.New);
+            CommentWindow commentWindow = new CommentWindow(mainViewModel);
             commentWindow.Owner = Application.Current.MainWindow;
             commentWindow.ShowDialog();
         }

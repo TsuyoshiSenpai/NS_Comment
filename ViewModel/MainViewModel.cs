@@ -118,7 +118,7 @@ namespace NS_Comment
             AuthorsList,
             CommentsList
         }
-        public MainViewModel()
+        /*public MainViewModel()
         {
             AuthorsListVisibility = Visibility.Collapsed;
             CommentsListVisibility = Visibility.Collapsed;
@@ -135,6 +135,36 @@ namespace NS_Comment
             ReadUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Read));
             ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
+        }*/
+        public MainViewModel(Mode mode)
+        {
+            AuthorsListVisibility = Visibility.Collapsed;
+            CommentsListVisibility = Visibility.Collapsed;
+            ShowAuthorsListButton = true;
+            ShowCommentsListButton = true;
+            UserData = new ObservableCollection<UserInfo>();
+            Authors = new List<string> { };
+            UserComments = new List<string> { };
+            OKCommand = new RelayCommand(o => OK());
+            AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
+            CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
+            CreateNewUserCommand = new RelayCommand(o => SelectMode(Mode.New));
+            EditUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Edit));
+            ReadUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Read));
+            ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
+            ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
+            if (mode == Mode.New)
+            {
+                
+            }
+            else if (mode == Mode.Edit)
+            {
+
+            }
+            else if (mode == Mode.Read)
+            {
+
+            }
         }
         public void OK()
         {
