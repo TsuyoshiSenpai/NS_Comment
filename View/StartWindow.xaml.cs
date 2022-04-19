@@ -11,9 +11,26 @@ namespace NS_Comment
         {
             InitializeComponent();
         }
-        public StartWindow(MainViewModel model) : this()
+
+        private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DataContext = model;
+            CommentWindow commentWindow = new CommentWindow();
+            commentWindow.Owner = Application.Current.MainWindow;
+            commentWindow.ShowDialog();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            CommentWindow commentWindow = new CommentWindow();
+            commentWindow.Owner = Application.Current.MainWindow;
+            commentWindow.ShowDialog();
+        }
+
+        private void ReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            CommentWindow commentWindow = new CommentWindow();
+            commentWindow.Owner = Application.Current.MainWindow;
+            commentWindow.ShowDialog();
         }
     }
 }

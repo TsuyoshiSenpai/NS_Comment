@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NS_Comment" 
         xmlns:vm="clr-namespace:NS_Comment"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
         MinHeight="400" MinWidth="900"
         SizeToContent="WidthAndHeight"
@@ -38,13 +39,14 @@
                      Grid.Row="0"
                      Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Margin="5,0,39,0"
-                     Width="360"
+                     Margin="5,0,25,0"
+                     Width="370"
                      FontSize="12"/>
         </StackPanel>
         <StackPanel Grid.Column="1" 
                     HorizontalAlignment="Left" 
                     Height="165" 
+                    Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Margin="10,10,0,0" 
                     VerticalAlignment="Top" 
                     Width="156">
@@ -63,6 +65,7 @@
         <StackPanel Grid.Column="2" 
                     HorizontalAlignment="Left" 
                     Height="165" 
+                    Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Margin="10,10,0,0" 
                     VerticalAlignment="Top" 
                     Width="156">
@@ -130,6 +133,19 @@
                     VerticalAlignment="Center"
                     Width="80" 
                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" 
+                    Height="349" 
+                    Margin="408,10,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="50" 
+                    Grid.RowSpan="2">
+            <Button Content=">>"
+                    Command="{Binding ShowAuthorsListCommand}"
+                    Margin="0,25,0,0"/>
+            <Button Content=">>"
+                    Command="{Binding ShowCommentsListCommand}"
+                    Margin="0,161,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -11,6 +11,39 @@ namespace NS_Comment
         public ObservableCollection<UserInfo> UserData
         { get; set; }
 
+        private bool showAuthorsListButton;
+
+        public bool ShowAuthorsListButton
+        {
+            get { return showAuthorsListButton; }
+            set { showAuthorsListButton = value; OnPropertyChanged(); }
+        }
+
+        private bool showCommentsListButton;
+
+        public bool ShowCommentsListButton
+        {
+            get { return showCommentsListButton; }
+            set { showCommentsListButton = value; OnPropertyChanged(); }
+        }
+
+        private Visibility authorsListVisibility;
+
+        public Visibility AuthorsListVisibility
+        {
+            get { return authorsListVisibility; }
+            set { authorsListVisibility = value; OnPropertyChanged(); }
+        }
+
+        private Visibility commentsListVisibility;
+
+        public Visibility CommentsListVisibility
+        {
+            get { return commentsListVisibility; }
+            set { commentsListVisibility = value; }
+        }
+
+
         private int index = 0;
         public int Index
         {
@@ -61,6 +94,10 @@ namespace NS_Comment
         { get; set; }
         public RelayCommand ReadUserInfoCommand
         { get; set; }
+        public RelayCommand ShowAuthorsListCommand
+        { get; set; }
+        public RelayCommand ShowCommentsListCommand
+        { get; set; }
         #endregion
 
         public enum Mode
@@ -76,8 +113,17 @@ namespace NS_Comment
             Comment
         }
 
+        public enum ListType
+        {
+            AuthorsList,
+            CommentsList
+        }
         public MainViewModel()
         {
+            AuthorsListVisibility = Visibility.Collapsed;
+            CommentsListVisibility = Visibility.Collapsed;
+            ShowAuthorsListButton = true;
+            ShowCommentsListButton = true;
             UserData = new ObservableCollection<UserInfo>();
             Authors = new List<string> { };
             UserComments = new List<string> { };
@@ -87,6 +133,8 @@ namespace NS_Comment
             CreateNewUserCommand = new RelayCommand(o => SelectMode(Mode.New));
             EditUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Edit));
             ReadUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Read));
+            ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
+            ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
         }
         public void OK()
         {
@@ -110,23 +158,39 @@ namespace NS_Comment
             OkIsEnabled = true;
             if (mode == Mode.New)
             {
-                CommentWindow commentWindow = new CommentWindow(this);
+                CommentWindow commentWindow = new CommentWindow();
                 commentWindow.Owner = Application.Current.MainWindow;
                 commentWindow.ShowDialog();
             }
             else if (mode == Mode.Edit)
             {
                 OkIsEnabled = false;
-                CommentWindow commentWindow = new CommentWindow(this);
+                CommentWindow commentWindow = new CommentWindow();
                 commentWindow.Owner = Application.Current.MainWindow;
                 commentWindow.ShowDialog();
             }
             else if (mode == Mode.Read)
             {
                 OkIsEnabled = true;
-                CommentWindow commentWindow = new CommentWindow(this);
+                CommentWindow commentWindow = new CommentWindow();
                 commentWindow.Owner = Application.Current.MainWindow;
                 commentWindow.ShowDialog();
+            }
+        }
+        public void ShowList(ListType listType)
+        {
+            if (listType == ListType.AuthorsList)
+            {
+                AuthorsListVisibility = Visibility.Visible;
+                CommentsListVisibility = Visibility.Collapsed;
+                ShowCommentsListButton = !ShowCommentsListButton;
+
+            }
+            else if (listType == ListType.CommentsList)
+            {
+                CommentsListVisibility = Visibility.Visible;
+                AuthorsListVisibility = Visibility.Collapsed;
+                ShowAuthorsListButton = !ShowAuthorsListButton;
             }
         }
     }

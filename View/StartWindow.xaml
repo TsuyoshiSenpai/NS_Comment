@@ -7,22 +7,22 @@
         mc:Ignorable="d"
         Title="StartWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="NEW" 
-                Command="{Binding CreateNewUserCommand}"
+        <Button Content="NEW"
+                Click="NewButton_Click"
                 HorizontalAlignment="Left" 
                 Margin="279,32,0,0" 
                 VerticalAlignment="Top" 
                 Width="199" 
                 Height="53"/>
         <Button Content="EDIT" 
-                Command="{Binding EditUserInfoCommand}"
+                Click="EditButton_Click"
                 HorizontalAlignment="Left" 
                 Margin="279,119,0,0"
                 VerticalAlignment="Top"
                 Width="199"
                 Height="53"/>
         <Button Content="READ" 
-                Command="{Binding ReadUserInfoCommand}"
+                Click="ReadButton_Click"
                 HorizontalAlignment="Left" 
                 Margin="279,213,0,0" 
                 VerticalAlignment="Top" 
