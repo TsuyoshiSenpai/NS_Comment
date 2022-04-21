@@ -71,7 +71,7 @@ namespace NS_Comment
         public List<string> UserComments 
         { get; set; }
 
-        private bool okIsEnabled = true;
+        private bool okIsEnabled;
 
         public bool OkIsEnabled
         {
@@ -137,7 +137,17 @@ namespace NS_Comment
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
             if (mode == Mode.New)
             {
-                
+                if (string.IsNullOrEmpty(AuthorName))
+                {
+                    if (string.IsNullOrEmpty(UserComment))
+                    {
+                        OkIsEnabled = false;
+                    }
+                }
+                else
+                {
+                    OkIsEnabled = true;
+                }
             }
             else if (mode == Mode.Edit)
             {
@@ -145,7 +155,7 @@ namespace NS_Comment
             }
             else if (mode == Mode.Read)
             {
-
+                OkIsEnabled = false;
             }
         }
         public void OK()
