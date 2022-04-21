@@ -66,9 +66,9 @@ namespace NS_Comment
             get { return userComment; }
             set { if (value != userComment) userComment = value; OnPropertyChanged(); }
         }
-        public List<string> Authors
+        public ObservableCollection<string> Authors
         { get; set; }
-        public List<string> UserComments 
+        public ObservableCollection<string> UserComments 
         { get; set; }
 
         private bool okIsEnabled;
@@ -125,8 +125,8 @@ namespace NS_Comment
             ShowAuthorsListButton = true;
             ShowCommentsListButton = true;
             UserData = new ObservableCollection<UserInfo>();
-            Authors = new List<string> { };
-            UserComments = new List<string> { };
+            Authors = new ObservableCollection<string> { };
+            UserComments = new ObservableCollection<string> { };
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
             CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
