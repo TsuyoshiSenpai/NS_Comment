@@ -40,7 +40,7 @@ namespace NS_Comment
         public Visibility CommentsListVisibility
         {
             get { return commentsListVisibility; }
-            set { commentsListVisibility = value; }
+            set { commentsListVisibility = value; OnPropertyChanged(); }
         }
 
 
@@ -202,7 +202,7 @@ namespace NS_Comment
             {
                 CommentsListVisibility = Visibility.Visible;
                 AuthorsListVisibility = Visibility.Collapsed;
-                ShowAuthorsListButton = !ShowAuthorsListButton;
+                ShowAuthorsListButton = !ShowCommentsListButton;
             }
         }
     }
