@@ -45,11 +45,10 @@
         </StackPanel>
         <StackPanel Grid.Column="1" 
                     HorizontalAlignment="Left" 
-                    Height="165" 
-                    Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                    Margin="10,10,0,0" 
+                    Height="185" 
+                    Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="156">
+                    Width="166">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -64,11 +63,10 @@
         </StackPanel>
         <StackPanel Grid.Column="2" 
                     HorizontalAlignment="Left" 
-                    Height="165" 
-                    Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="10,10,0,0" 
+                    Height="185" 
+                    Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="156">
+                    Width="166">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
