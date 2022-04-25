@@ -56,7 +56,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { if(value != authorName) authorName = value; OnPropertyChanged(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); Check(); }
         }
 
         private string userComment;
@@ -64,7 +64,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if (value != userComment) userComment = value; OnPropertyChanged(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); Check(); }
         }
         public ObservableCollection<string> Authors
         { get; set; }
@@ -79,6 +79,7 @@ namespace NS_Comment
             set { okIsEnabled = value; OnPropertyChanged(); }
         }
 
+        public Mode SelectedMode;
 
         #endregion
         #region commands
@@ -87,12 +88,6 @@ namespace NS_Comment
         public RelayCommand AuthorSelectCommand
         { get; set; }
         public RelayCommand CommentSelectCommand
-        { get; set; }
-        public RelayCommand CreateNewUserCommand
-        { get; set; }
-        public RelayCommand EditUserInfoCommand
-        { get; set; }
-        public RelayCommand ReadUserInfoCommand
         { get; set; }
         public RelayCommand ShowAuthorsListCommand
         { get; set; }
@@ -120,6 +115,7 @@ namespace NS_Comment
         }
         public MainViewModel(Mode mode)
         {
+            SelectedMode = mode;
             AuthorsListVisibility = Visibility.Collapsed;
             CommentsListVisibility = Visibility.Collapsed;
             ShowAuthorsListButton = true;
@@ -130,30 +126,23 @@ namespace NS_Comment
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
             CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
-            CreateNewUserCommand = new RelayCommand(o => SelectMode(Mode.New));
-            EditUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Edit));
-            ReadUserInfoCommand = new RelayCommand(o => SelectMode(Mode.Read));
             ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
-            if (mode == Mode.New)
+        }
+        public void Check()
+        {
+            if (SelectedMode == Mode.New)
             {
-                if (string.IsNullOrEmpty(AuthorName))
+                if (string.IsNullOrEmpty(AuthorName) && string.IsNullOrEmpty(UserComment))
                 {
-                    if (string.IsNullOrEmpty(UserComment))
-                    {
-                        OkIsEnabled = false;
-                    }
+                    OkIsEnabled = false;
                 }
                 else
                 {
                     OkIsEnabled = true;
                 }
             }
-            else if (mode == Mode.Edit)
-            {
-
-            }
-            else if (mode == Mode.Read)
+            else if (SelectedMode == Mode.Read)
             {
                 OkIsEnabled = false;
             }
@@ -163,6 +152,7 @@ namespace NS_Comment
             UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
             Authors.Add(UserData[Index].Name);
             UserComments.Add(UserData[Index].Comment);
+            Index++;
         }
         public void Select(Reciever reciever)
         {
@@ -173,30 +163,6 @@ namespace NS_Comment
             else if (reciever == Reciever.Comment)
             {
                 UserComment = UserComments[Index];
-            }
-        }
-        public void SelectMode(Mode mode)
-        {
-            OkIsEnabled = true;
-            if (mode == Mode.New)
-            {
-                CommentWindow commentWindow = new CommentWindow();
-                commentWindow.Owner = Application.Current.MainWindow;
-                commentWindow.ShowDialog();
-            }
-            else if (mode == Mode.Edit)
-            {
-                OkIsEnabled = false;
-                CommentWindow commentWindow = new CommentWindow();
-                commentWindow.Owner = Application.Current.MainWindow;
-                commentWindow.ShowDialog();
-            }
-            else if (mode == Mode.Read)
-            {
-                OkIsEnabled = true;
-                CommentWindow commentWindow = new CommentWindow();
-                commentWindow.Owner = Application.Current.MainWindow;
-                commentWindow.ShowDialog();
             }
         }
         public void ShowList(ListType listType)
