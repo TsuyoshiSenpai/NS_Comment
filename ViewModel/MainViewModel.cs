@@ -56,7 +56,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { if(value != authorName) authorName = value; OnPropertyChanged(); Check(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckMode(); }
         }
 
         private string userComment;
@@ -64,7 +64,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if (value != userComment) userComment = value; OnPropertyChanged(); Check(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckMode(); }
         }
         public ObservableCollection<string> Authors
         { get; set; }
@@ -129,7 +129,7 @@ namespace NS_Comment
             ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
         }
-        public void Check()
+        public void CheckMode()
         {
             if (SelectedMode == Mode.New)
             {
