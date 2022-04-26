@@ -56,7 +56,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckMode(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckButtonMode(); }
         }
 
         private string userComment;
@@ -64,7 +64,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckMode(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckButtonMode(); }
         }
         public ObservableCollection<string> Authors
         { get; set; }
@@ -80,6 +80,23 @@ namespace NS_Comment
         }
 
         public Mode SelectedMode;
+
+        private bool authorsListIsShowed;
+
+        public bool AuthorsListIsShowed
+        {
+            get { return authorsListIsShowed; }
+            set { authorsListIsShowed = value; }
+        }
+
+        private bool commentsListIsShowed;
+
+        public bool CommentsListIsShowed
+        {
+            get { return commentsListIsShowed; }
+            set { commentsListIsShowed = value; }
+        }
+
 
         #endregion
         #region commands
@@ -116,8 +133,11 @@ namespace NS_Comment
         public MainViewModel(Mode mode)
         {
             SelectedMode = mode;
+            CheckListMode();
             AuthorsListVisibility = Visibility.Collapsed;
             CommentsListVisibility = Visibility.Collapsed;
+            AuthorsListIsShowed = false;
+            CommentsListIsShowed = false;
             ShowAuthorsListButton = true;
             ShowCommentsListButton = true;
             UserData = new ObservableCollection<UserInfo>();
@@ -129,7 +149,7 @@ namespace NS_Comment
             ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
         }
-        public void CheckMode()
+        public void CheckButtonMode()
         {
             if (SelectedMode == Mode.New)
             {
@@ -169,16 +189,65 @@ namespace NS_Comment
         {
             if (listType == ListType.AuthorsList)
             {
-                AuthorsListVisibility = Visibility.Visible;
-                CommentsListVisibility = Visibility.Collapsed;
-                ShowCommentsListButton = !ShowCommentsListButton;
-
+                if (AuthorsListIsShowed)
+                {
+                    AuthorsListVisibility = Visibility.Collapsed;
+                    CommentsListVisibility = Visibility.Collapsed;
+                    AuthorsListIsShowed = false;
+                    CommentsListIsShowed = false;
+                    CheckListMode();
+                }
+                else
+                {
+                    AuthorsListVisibility = Visibility.Visible;
+                    CommentsListVisibility = Visibility.Collapsed;
+                    AuthorsListIsShowed = true;
+                    CommentsListIsShowed = false;
+                    CheckListMode();
+                }
             }
             else if (listType == ListType.CommentsList)
             {
-                CommentsListVisibility = Visibility.Visible;
-                AuthorsListVisibility = Visibility.Collapsed;
-                ShowAuthorsListButton = !ShowCommentsListButton;
+                if (CommentsListIsShowed)
+                {
+                    CommentsListVisibility = Visibility.Collapsed;
+                    AuthorsListVisibility = Visibility.Collapsed;
+                    CommentsListIsShowed = false;
+                    AuthorsListIsShowed = false;
+                    CheckListMode();
+                }
+                else
+                {
+                    CommentsListVisibility = Visibility.Visible;
+                    AuthorsListVisibility = Visibility.Collapsed;
+                    CommentsListIsShowed = true;
+                    AuthorsListIsShowed = false;
+                    CheckListMode();
+                }
+            }
+        }
+        public void CheckListMode()
+        {
+            if (AuthorsListIsShowed)
+            {
+                ShowAuthorsListButton = true;
+                ShowCommentsListButton = false;
+            }
+            else
+            {
+                ShowAuthorsListButton = true;
+                ShowCommentsListButton = true;
+            }
+
+            if (CommentsListIsShowed)
+            {
+                ShowCommentsListButton = true;
+                ShowAuthorsListButton = false;
+            }
+            else
+            {
+                ShowAuthorsListButton = true;
+                ShowCommentsListButton = true;
             }
         }
     }

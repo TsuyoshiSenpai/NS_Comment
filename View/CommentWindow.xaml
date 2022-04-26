@@ -142,9 +142,11 @@
                     Width="50" 
                     Grid.RowSpan="2">
             <Button Content=">>"
+                    IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
                     Margin="0,25,0,0"/>
             <Button Content=">>"
+                    IsEnabled="{Binding ShowCommentsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
                     Margin="0,161,0,0"/>
         </StackPanel>
