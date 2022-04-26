@@ -26,6 +26,7 @@ namespace NS_Comment
             CommentWindow commentWindow = new CommentWindow(mainViewModel);
             commentWindow.Owner = Application.Current.MainWindow;
             commentWindow.ShowDialog();
+            // тут нужно выводить первые элементы списков
         }
 
         private void ReadButton_Click(object sender, RoutedEventArgs e)
@@ -34,6 +35,7 @@ namespace NS_Comment
             CommentWindow commentWindow = new CommentWindow(mainViewModel);
             commentWindow.Owner = Application.Current.MainWindow;
             commentWindow.ShowDialog();
+            // тут нужно выводить первые элементы списков
         }
     }
 }

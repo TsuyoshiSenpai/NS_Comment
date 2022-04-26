@@ -138,8 +138,6 @@ namespace NS_Comment
             CommentsListVisibility = Visibility.Collapsed;
             AuthorsListIsShowed = false;
             CommentsListIsShowed = false;
-            ShowAuthorsListButton = true;
-            ShowCommentsListButton = true;
             UserData = new ObservableCollection<UserInfo>();
             Authors = new ObservableCollection<string> { };
             UserComments = new ObservableCollection<string> { };
@@ -233,7 +231,7 @@ namespace NS_Comment
                 ShowAuthorsListButton = true;
                 ShowCommentsListButton = false;
             }
-            else
+            else if (!CommentsListIsShowed)
             {
                 ShowAuthorsListButton = true;
                 ShowCommentsListButton = true;
@@ -244,7 +242,7 @@ namespace NS_Comment
                 ShowCommentsListButton = true;
                 ShowAuthorsListButton = false;
             }
-            else
+            else if (!AuthorsListIsShowed)
             {
                 ShowAuthorsListButton = true;
                 ShowCommentsListButton = true;
