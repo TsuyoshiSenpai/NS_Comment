@@ -37,7 +37,6 @@
                HorizontalContentAlignment="Left"
                FontSize="12" VerticalAlignment="Top" Height="25" Width="123"/>
             <TextBox Height="20" TextWrapping="Wrap"
-                     TextChanged="AuthorBoxTextChanged"
                      Grid.Row="0"
                      Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -99,7 +98,6 @@
                Height="25" 
                Width="123"/>
             <TextBox Height="100" 
-                     TextChanged="CommentBoxTextChanged"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
                  Grid.Row="1"

@@ -19,15 +19,5 @@ namespace NS_Comment
             InitializeComponent();
             this.DataContext = model;
         }
-
-        public void AuthorBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            OkButton.IsEnabled = true;
-        }
-
-        public void CommentBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            OkButton.IsEnabled = true;
-        }
     }
 }
