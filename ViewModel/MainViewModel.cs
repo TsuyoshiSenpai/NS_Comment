@@ -56,7 +56,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckButtonMode(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); }
         }
 
         private string userComment;
@@ -64,7 +64,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckButtonMode(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); }
         }
         public ObservableCollection<string> Authors
         { get; set; }
@@ -133,6 +133,7 @@ namespace NS_Comment
         public MainViewModel(Mode mode)
         {
             SelectedMode = mode;
+            CheckButtonMode();
             CheckListMode();
             AuthorsListVisibility = Visibility.Collapsed;
             CommentsListVisibility = Visibility.Collapsed;
@@ -160,7 +161,7 @@ namespace NS_Comment
                     OkIsEnabled = true;
                 }
             }
-            else if (SelectedMode == Mode.Read)
+            if (SelectedMode == Mode.Read)
             {
                 OkIsEnabled = false;
             }
