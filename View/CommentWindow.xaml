@@ -8,18 +8,20 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
+        MinHeight="390"
+        MinWidth="475"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         Title="CommentWindow">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" 
                     Height="165" 
@@ -114,8 +116,7 @@
                     Margin="10,144,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
-                    Width="772" 
-                    Grid.ColumnSpan="3">
+                    Width="438">
             <Button Content="ОК"
                     Name="OkButton"
                     IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
