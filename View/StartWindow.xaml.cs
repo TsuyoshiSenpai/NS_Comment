@@ -22,8 +22,8 @@ namespace NS_Comment
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel mainViewModel = new MainViewModel(MainViewModel.Mode.Edit);
-            CommentWindow commentWindow = new CommentWindow(mainViewModel);
+            MainViewModel editViewModel = new MainViewModel(MainViewModel.Mode.Edit);
+            CommentWindow commentWindow = new CommentWindow(editViewModel);
             commentWindow.Owner = Application.Current.MainWindow;
             commentWindow.ShowDialog();
             // тут нужно выводить первые элементы списков
