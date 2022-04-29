@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
-        MinHeight="390"
+        MinHeight="290"
         MinWidth="475"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
@@ -24,7 +24,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="165" 
+                    Height="61" 
                     Grid.Column="0"
                     Grid.Row="0"
                     Margin="10,10,0,0" 
@@ -47,14 +47,14 @@
         </StackPanel>
         <StackPanel Grid.Column="1" 
                     HorizontalAlignment="Left" 
-                    Height="185" 
+                    Height="246" 
                     Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="166">
+                    Width="166" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="162" 
+                     Height="240" 
                      Width="136" Margin="10,0,0,0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
@@ -65,14 +65,14 @@
         </StackPanel>
         <StackPanel Grid.Column="2" 
                     HorizontalAlignment="Left" 
-                    Height="185" 
+                    Height="249" 
                     Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="166">
+                    Width="166" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="163" 
+                     Height="240" 
                      Width="136" Margin="10,0,0,0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
@@ -136,7 +136,7 @@
                     Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="349" 
+                    Height="236" 
                     Margin="408,10,0,0" 
                     VerticalAlignment="Top" 
                     Width="50" 
@@ -145,10 +145,10 @@
                     IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
                     Margin="0,25,0,0"/>
-            <Button Content=">>"
-                    IsEnabled="{Binding ShowCommentsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            <Button Content="&gt;&gt;"
+                    IsEnabled="{Binding ShowCommentsListButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
-                    Margin="0,161,0,0"/>
+                    Margin="0,52,0,0"/>
         </StackPanel>
     </Grid>
 </Window>
