@@ -168,12 +168,31 @@ namespace NS_Comment
         }
         public void OK()
         {
-            UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
-            Authors.Add(UserData[Index].Name);
-            UserComments.Add(UserData[Index].Comment);
-            Index++;
-            ShowAuthorsListButton = true;
-            ShowCommentsListButton = true;
+            if (SelectedMode == Mode.New)
+            {
+                UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
+                Authors.Add(UserData[Index].Name);
+                UserComments.Add(UserData[Index].Comment);
+                Index++;
+                ShowAuthorsListButton = true;
+                ShowCommentsListButton = true;
+            }
+            else if (SelectedMode == Mode.Edit)
+            {
+                for (int i = 0; i < UserData.Count; i++)
+                {
+                    if (UserData[i].Name.Equals(AuthorName))
+                    {
+                        UserData[i].Comment = UserComment;
+                        UserComments[i] = UserComment;
+                    }
+                    else if (UserData[i].Comment.Equals(UserComment))
+                    {
+                        UserData[i].Name = AuthorName;
+                        Authors[i] = AuthorName;
+                    }
+                }
+            }
         }
         public void Select(Reciever reciever)
         {
@@ -249,6 +268,8 @@ namespace NS_Comment
                 Index++;
                 ShowAuthorsListButton = true;
                 ShowCommentsListButton = true;
+                AuthorName = Authors[0];
+                UserComment = UserComments[0];
             }
         }
     }
