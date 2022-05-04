@@ -56,7 +56,7 @@ namespace NS_Comment
         public string AuthorName
         {
             get { return authorName; }
-            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckButtonMode(); }
+            set { if(value != authorName) authorName = value; OnPropertyChanged(); CheckOkButtonMode(); }
         }
 
         private string userComment;
@@ -64,7 +64,7 @@ namespace NS_Comment
         public string UserComment
         {
             get { return userComment; }
-            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckButtonMode(); }
+            set { if (value != userComment) userComment = value; OnPropertyChanged(); CheckOkButtonMode(); }
         }
         public ObservableCollection<string> Authors
         { get; set; }
@@ -141,13 +141,14 @@ namespace NS_Comment
             UserData = new ObservableCollection<UserInfo>();
             Authors = new ObservableCollection<string> { };
             UserComments = new ObservableCollection<string> { };
+            TestEditMode(mode);
             OKCommand = new RelayCommand(o => OK());
             AuthorSelectCommand = new RelayCommand(o => Select(Reciever.Author));
             CommentSelectCommand = new RelayCommand(o => Select(Reciever.Comment));
             ShowAuthorsListCommand = new RelayCommand(o => ShowList(ListType.AuthorsList));
             ShowCommentsListCommand = new RelayCommand(o => ShowList(ListType.CommentsList));
         }
-        public void CheckButtonMode()
+        public void CheckOkButtonMode()
         {
             if (SelectedMode == Mode.New || SelectedMode == Mode.Edit)
             {
@@ -171,6 +172,8 @@ namespace NS_Comment
             Authors.Add(UserData[Index].Name);
             UserComments.Add(UserData[Index].Comment);
             Index++;
+            ShowAuthorsListButton = true;
+            ShowCommentsListButton = true;
         }
         public void Select(Reciever reciever)
         {
@@ -226,24 +229,24 @@ namespace NS_Comment
         }
         public void CheckListMode()
         {
-            if (AuthorsListIsShowed)
+            if (Index == 0)
             {
-                ShowAuthorsListButton = true;
+                ShowAuthorsListButton = false;
                 ShowCommentsListButton = false;
             }
-            else if (!CommentsListIsShowed)
+        }
+        public void TestEditMode(Mode mode)
+        {
+            if (mode == Mode.Edit || mode == Mode.Read)
             {
-                ShowAuthorsListButton = true;
-                ShowCommentsListButton = true;
-            }
-
-            if (CommentsListIsShowed)
-            {
-                ShowCommentsListButton = true;
-                ShowAuthorsListButton = false;
-            }
-            else if (!AuthorsListIsShowed)
-            {
+                UserData.Add(new UserInfo() { Name = "TestName1", Comment = "TestComment1", Id = Guid.NewGuid() });
+                Authors.Add(UserData[Index].Name);
+                UserComments.Add(UserData[Index].Comment);
+                Index++;
+                UserData.Add(new UserInfo() { Name = "TestName2", Comment = "TestComment2", Id = Guid.NewGuid() });
+                Authors.Add(UserData[Index].Name);
+                UserComments.Add(UserData[Index].Comment);
+                Index++;
                 ShowAuthorsListButton = true;
                 ShowCommentsListButton = true;
             }
