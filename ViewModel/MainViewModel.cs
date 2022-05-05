@@ -97,6 +97,14 @@ namespace NS_Comment
             set { commentsListIsShowed = value; }
         }
 
+        private bool listIsNotEmpty;
+
+        public bool ListIsNotEmpty
+        {
+            get { return listIsNotEmpty; }
+            set { listIsNotEmpty = value; }
+        }
+
 
         #endregion
         #region commands
@@ -174,8 +182,8 @@ namespace NS_Comment
                 Authors.Add(UserData[Index].Name);
                 UserComments.Add(UserData[Index].Comment);
                 Index++;
-                ShowAuthorsListButton = true;
-                ShowCommentsListButton = true;
+                ListIsNotEmpty = true;
+                CheckListMode();
             }
             else if (SelectedMode == Mode.Edit)
             {
@@ -248,7 +256,12 @@ namespace NS_Comment
         }
         public void CheckListMode()
         {
-            if (Index == 0)
+            if (ListIsNotEmpty)
+            {
+                ShowAuthorsListButton = true;
+                ShowCommentsListButton = true;
+            }
+            else
             {
                 ShowAuthorsListButton = false;
                 ShowCommentsListButton = false;
@@ -270,6 +283,7 @@ namespace NS_Comment
                 ShowCommentsListButton = true;
                 AuthorName = Authors[0];
                 UserComment = UserComments[0];
+                ListIsNotEmpty = true;
             }
         }
     }
