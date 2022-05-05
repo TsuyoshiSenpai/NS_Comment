@@ -27,7 +27,7 @@
                     Height="61" 
                     Grid.Column="0"
                     Grid.Row="0"
-                    Margin="10,10,0,0" 
+                    Margin="10,22,0,0" 
                     VerticalAlignment="Top" 
                     Width="420">
             <Label Content="Автор комментария:"
@@ -41,8 +41,8 @@
                      Grid.Row="0"
                      Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Margin="5,0,25,0"
-                     Width="370"
+                     Margin="12,0,25,0"
+                     Width="380"
                      FontSize="12"/>
         </StackPanel>
         <StackPanel Grid.Column="1" 
@@ -50,12 +50,12 @@
                     Height="246" 
                     Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="166" Grid.RowSpan="2">
+                    Width="180" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="240" 
-                     Width="136" Margin="10,0,0,0">
+                     Height="220" 
+                     Width="120" Margin="22,22,22,22">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
@@ -68,12 +68,12 @@
                     Height="249" 
                     Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="166" Grid.RowSpan="2">
+                    Width="180" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="240" 
-                     Width="136" Margin="10,0,0,0">
+                     Height="220" 
+                     Width="120" Margin="22,22,22,22">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
@@ -110,20 +110,20 @@
                  Margin="12,0,0,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="30" 
+                    Height="48" 
                     Orientation="Horizontal"
                     FlowDirection="LeftToRight"
                     Margin="10,144,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
-                    Width="438">
+                    Width="448">
             <Button Content="ОК"
                     Name="OkButton"
                     IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="26"
-                    Margin="210,0,0,0"
+                    Margin="268,0,0,22"
                     VerticalAlignment="Center"
                     Width="80"/>
             <Button Content="Отмена"
@@ -133,22 +133,24 @@
                     Click="CancelButton_Click"
                     VerticalAlignment="Center"
                     Width="80" 
-                    Margin="20,0,0,0"/>
+                    Margin="20,0,0,22"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="236" 
-                    Margin="408,10,0,0" 
+                    Height="206" 
+                    Margin="408,22,0,0" 
                     VerticalAlignment="Top" 
-                    Width="50" 
+                    Width="73" 
                     Grid.RowSpan="2">
             <Button Content=">>"
+                    Width="50"
                     IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
-                    Margin="0,25,0,0"/>
+                    Margin="0,25,22,0"/>
             <Button Content="&gt;&gt;"
+                    Width="50"
                     IsEnabled="{Binding ShowCommentsListButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
-                    Margin="0,52,0,0"/>
+                    Margin="0,51,22,0"/>
         </StackPanel>
     </Grid>
 </Window>
