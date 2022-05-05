@@ -35,10 +35,14 @@
                VerticalContentAlignment="Top"
                Margin="10,0,0,0"
                HorizontalContentAlignment="Left"
-               FontSize="12" VerticalAlignment="Top" Height="25" Width="123"/>
+               FontSize="12" 
+               VerticalAlignment="Top" 
+               Height="25" 
+               Width="123"/>
             <TextBox Height="20" TextWrapping="Wrap"
                      TextChanged="AuthorBox_TextChanged"
                      Grid.Row="0"
+                     HorizontalAlignment="Left"
                      Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Margin="12,0,25,0"
@@ -50,7 +54,7 @@
                     Height="246" 
                     Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="180" Grid.RowSpan="2">
+                    Width="165" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -68,7 +72,7 @@
                     Height="249" 
                     Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="180" Grid.RowSpan="2">
+                    Width="165" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -87,7 +91,7 @@
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
                     Width="420">
-            <Label Content="Комментарий:" 
+            <Label Content="Kомментарий:" 
                HorizontalAlignment="Left" 
                Grid.Row="1"
                Grid.Column="0"
@@ -107,7 +111,7 @@
                  HorizontalAlignment="Left"
                  Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                  Width="380"
-                 Margin="12,0,0,0"/>
+                 Margin="12,0,25,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
                     Height="48" 
@@ -142,12 +146,14 @@
                     Width="73" 
                     Grid.RowSpan="2">
             <Button Content=">>"
+                    Height="20"
                     Width="50"
                     IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
                     Margin="0,25,22,0"/>
             <Button Content="&gt;&gt;"
                     Width="50"
+                    Height="20"
                     IsEnabled="{Binding ShowCommentsListButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
                     Margin="0,51,22,0"/>
