@@ -176,6 +176,11 @@ namespace NS_Comment
         }
         public void OK()
         {
+            if (AuthorName == null || UserComment == null || AuthorName == "" || UserComment == "")
+            {
+                MessageBox.Show("Одно из полей пустое!");
+                return;
+            }
             if (SelectedMode == Mode.New)
             {
                 UserData.Add(new UserInfo() { Name = AuthorName, Comment = UserComment, Id = Guid.NewGuid() });
