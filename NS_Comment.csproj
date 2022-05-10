@@ -110,6 +110,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\closed_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\opened_list.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

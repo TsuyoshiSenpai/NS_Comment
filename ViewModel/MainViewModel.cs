@@ -105,6 +105,21 @@ namespace NS_Comment
             set { listIsNotEmpty = value; }
         }
 
+        private string topButtonIcon;
+
+        public string TopButtonIcon
+        {
+            get { return topButtonIcon; }
+            set { topButtonIcon = value; OnPropertyChanged(); }
+        }
+
+        private string bottomButtonIcon;
+
+        public string BottomButtonIcon
+        {
+            get { return bottomButtonIcon; }
+            set { bottomButtonIcon = value; OnPropertyChanged(); }
+        }
 
         #endregion
         #region commands
@@ -146,6 +161,7 @@ namespace NS_Comment
             CommentsListVisibility = Visibility.Collapsed;
             AuthorsListIsShowed = false;
             CommentsListIsShowed = false;
+            CheckIconMode();
             UserData = new ObservableCollection<UserInfo>();
             Authors = new ObservableCollection<string> { };
             UserComments = new ObservableCollection<string> { };
@@ -176,7 +192,7 @@ namespace NS_Comment
         }
         public void OK()
         {
-            if (AuthorName == null || UserComment == null || AuthorName == "" || UserComment == "")
+            if (string.IsNullOrEmpty(AuthorName) || string.IsNullOrEmpty(UserComment))
             {
                 MessageBox.Show("Одно из полей пустое!");
                 return;
@@ -228,6 +244,7 @@ namespace NS_Comment
                     CommentsListVisibility = Visibility.Collapsed;
                     AuthorsListIsShowed = false;
                     CommentsListIsShowed = false;
+                    CheckIconMode();
                     CheckListMode();
                 }
                 else
@@ -236,6 +253,7 @@ namespace NS_Comment
                     CommentsListVisibility = Visibility.Collapsed;
                     AuthorsListIsShowed = true;
                     CommentsListIsShowed = false;
+                    CheckIconMode();
                     CheckListMode();
                 }
             }
@@ -247,6 +265,7 @@ namespace NS_Comment
                     AuthorsListVisibility = Visibility.Collapsed;
                     CommentsListIsShowed = false;
                     AuthorsListIsShowed = false;
+                    CheckIconMode();
                     CheckListMode();
                 }
                 else
@@ -255,6 +274,7 @@ namespace NS_Comment
                     AuthorsListVisibility = Visibility.Collapsed;
                     CommentsListIsShowed = true;
                     AuthorsListIsShowed = false;
+                    CheckIconMode();
                     CheckListMode();
                 }
             }
@@ -270,6 +290,32 @@ namespace NS_Comment
             {
                 ShowAuthorsListButton = false;
                 ShowCommentsListButton = false;
+            }
+        }
+        public void CheckIconMode()
+        {
+            string ClosedIcon = "closed_list.png";
+            string OpenedIcon = "opened_list.png";
+            if (AuthorsListIsShowed)
+            {
+                TopButtonIcon = OpenedIcon;
+                BottomButtonIcon = ClosedIcon;
+            }
+            else if (!CommentsListIsShowed)
+            {
+                TopButtonIcon = ClosedIcon;
+                BottomButtonIcon = ClosedIcon;
+            }
+
+            if (CommentsListIsShowed)
+            {
+                BottomButtonIcon = OpenedIcon;
+                TopButtonIcon = ClosedIcon;
+            }
+            else if (!AuthorsListIsShowed)
+            {
+                BottomButtonIcon = ClosedIcon;
+                TopButtonIcon = ClosedIcon;
             }
         }
         public void TestEditMode(Mode mode)

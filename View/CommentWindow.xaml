@@ -145,18 +145,26 @@
                     VerticalAlignment="Top" 
                     Width="73" 
                     Grid.RowSpan="2">
-            <Button Content=">>"
-                    Height="30"
+            <Button Height="30"
                     Width="30"
                     IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
-                    Margin="0,20,22,0"/>
-            <Button Content="&gt;&gt;"
-                    Width="30"
+                    Margin="0,20,22,0">
+                <Image Source="{Binding TopButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Height="20"/>
+            </Button>
+            <Button Width="30"
                     Height="30"
                     IsEnabled="{Binding ShowCommentsListButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
-                    Margin="0,46,22,0"/>
+                    Margin="0,46,22,0">
+                <Image Source="{Binding BottomButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Height="20"/>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
