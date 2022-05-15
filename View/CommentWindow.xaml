@@ -23,30 +23,35 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Left" 
-                    Height="61" 
+        <StackPanel HorizontalAlignment="Stretch" 
+                    Height="Auto" 
+                    MinHeight="61"
                     Grid.Column="0"
                     Grid.Row="0"
                     Margin="10,22,0,0" 
-                    VerticalAlignment="Top" 
-                    Width="420">
+                    VerticalAlignment="Stretch" 
+                    MinWidth="420"
+                    Width="Auto">
             <Label Content="Автор комментария:"
                HorizontalAlignment="Left" 
                VerticalContentAlignment="Top"
                Margin="10,0,0,0"
                HorizontalContentAlignment="Left"
                FontSize="12" 
-               VerticalAlignment="Top" 
-               Height="25" 
-               Width="123"/>
-            <TextBox Height="20" TextWrapping="Wrap"
+               VerticalAlignment="Top"
+                   MinHeight="25"
+                   MinWidth="123"
+               Height="Auto" 
+               Width="Auto"/>
+            <TextBox Height="Auto" TextWrapping="Wrap"
                      TextChanged="AuthorBox_TextChanged"
                      Grid.Row="0"
                      HorizontalAlignment="Left"
                      Grid.Column="0"
                      Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Margin="12,0,25,0"
-                     Width="380"
+                     MinWidth="380"
+                     Width="Auto"
                      FontSize="12"/>
         </StackPanel>
         <StackPanel Grid.Column="1" 
@@ -86,11 +91,13 @@
             </ListBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="130" 
+                    MinHeight="130"
+                    Height="Auto" 
                     Margin="10,10,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
-                    Width="420">
+                    MinWidth="420"
+                    Width="Auto">
             <Label Content="Kомментарий:" 
                HorizontalAlignment="Left" 
                Grid.Row="1"
@@ -102,7 +109,8 @@
                VerticalAlignment="Top" 
                Height="25" 
                Width="123"/>
-            <TextBox Height="100" 
+            <TextBox Height="Auto"
+                     MinHeight="100"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
                  TextChanged="CommentBox_TextChanged"
@@ -110,40 +118,49 @@
                  Grid.Column="0"
                  HorizontalAlignment="Left"
                  Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                 Width="380"
+                 Width="Auto"
+                     MinWidth="380"
                  Margin="12,0,25,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="48" 
+                    MinHeight="48"
+                    Height="Auto" 
                     Orientation="Horizontal"
                     FlowDirection="LeftToRight"
                     Margin="10,144,0,0" 
                     Grid.Row="1" 
                     VerticalAlignment="Top" 
-                    Width="448">
+                    MinWidth="448"
+                    Width="Auto">
             <Button Content="ОК"
                     Name="OkButton"
+                    MinHeight="26"
                     IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
                     Height="26"
                     Margin="268,0,0,22"
                     VerticalAlignment="Center"
-                    Width="80"/>
+                    MinWidth="80"
+                    Width="Auto"/>
             <Button Content="Отмена"
                     Name="CancelButton"
                     IsCancel="True"
-                    Height="26"
+                    MinHeight="26"
+                    Height="Auto"
                     Click="CancelButton_Click"
                     VerticalAlignment="Center"
-                    Width="80" 
+                    MinWidth="80" 
+                    Width="Auto"
                     Margin="20,0,0,22"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="206" 
+                    MinHeight="206"
+                    Height="Auto" 
                     Margin="408,22,0,0" 
                     VerticalAlignment="Top" 
-                    Width="73" 
+                    MinWidth="73"
+                    Width="Auto" 
                     Grid.RowSpan="2">
             <Button Height="30"
                     Width="30"
