@@ -56,15 +56,19 @@
         </StackPanel>
         <StackPanel Grid.Column="1" 
                     HorizontalAlignment="Left" 
-                    Height="265" 
+                    MinHeight="265"
+                    MinWidth="165"
+                    Height="Auto" 
                     Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="165" Grid.RowSpan="2">
+                    Width="Auto" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="220" 
-                     Width="120" Margin="22,22,22,22">
+                     Height="Auto" 
+                     MinHeight="220"
+                     MinWidth="120"
+                     Width="Auto" Margin="22,22,22,22">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
@@ -74,15 +78,19 @@
         </StackPanel>
         <StackPanel Grid.Column="2" 
                     HorizontalAlignment="Left" 
-                    Height="265" 
+                    MinHeight="265"
+                    Height="Auto" 
                     Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     VerticalAlignment="Top" 
-                    Width="165" Grid.RowSpan="2">
+                    MinWidth="165"
+                    Width="Auto" Grid.RowSpan="2">
             <ListBox HorizontalAlignment="Left" 
                      SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="220" 
-                     Width="120" Margin="22,22,22,22">
+                     Height="Auto" 
+                     MinHeight="220"
+                     MinWidth="120"
+                     Width="Auto" Margin="22,22,22,22">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
@@ -107,8 +115,10 @@
                HorizontalContentAlignment="Left"
                FontSize="12" 
                VerticalAlignment="Top" 
-               Height="25" 
-               Width="123"/>
+                   MinWidth="123"
+                   MinHeight="25"
+               Height="Auto" 
+               Width="Auto"/>
             <TextBox Height="Auto"
                      MinHeight="100"
                  TextWrapping="Wrap"
@@ -138,7 +148,7 @@
                     IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsDefault="True"
                     Command="{Binding OKCommand}"
-                    Height="26"
+                    Height="Auto"
                     Margin="268,0,0,22"
                     VerticalAlignment="Center"
                     MinWidth="80"
@@ -162,8 +172,11 @@
                     MinWidth="73"
                     Width="Auto" 
                     Grid.RowSpan="2">
-            <Button Height="30"
-                    Width="30"
+            <Button Height="Auto"
+                    MaxWidth="30"
+                    MinHeight="30"
+                    MinWidth="30"
+                    Width="Auto"
                     IsEnabled="{Binding ShowAuthorsListButton, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowAuthorsListCommand}"
                     Margin="0,20,22,0">
@@ -172,8 +185,11 @@
                        HorizontalAlignment="Center"
                        Height="20"/>
             </Button>
-            <Button Width="30"
-                    Height="30"
+            <Button Width="Auto"
+                    MaxWidth="30"
+                    MinWidth="30"
+                    MinHeight="30"
+                    Height="Auto"
                     IsEnabled="{Binding ShowCommentsListButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Command="{Binding ShowCommentsListCommand}"
                     Margin="0,46,22,0">
