@@ -68,7 +68,7 @@
             </ListBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" 
-                    Height="255" 
+                    Height="Auto" 
                     Margin="10,10,10,10" 
                     Orientation="Horizontal"
                     Grid.RowSpan="2" 
