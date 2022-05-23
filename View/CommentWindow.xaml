@@ -177,13 +177,15 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" 
-                    Height="255" 
+                    Height="Auto" 
+                        MinHeight="255"
                     Grid.Column="0"
                     Margin="0,0,0,0" 
                     Orientation="Vertical"
                     Grid.RowSpan="2" 
                     VerticalAlignment="Top" 
-                    Width="40">
+                        MinWidth="40"
+                    Width="Auto">
                 <Button Height="Auto"
                         MaxWidth="30"
                         MinHeight="30"
