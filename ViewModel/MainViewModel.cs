@@ -184,6 +184,10 @@ namespace NS_Comment
                 {
                     OkIsEnabled = true;
                 }
+                if (SelectedMode == Mode.Edit)
+                {
+                    OkIsEnabled = false;
+                }
             }
             if (SelectedMode == Mode.Read)
             {
@@ -208,6 +212,7 @@ namespace NS_Comment
             }
             else if (SelectedMode == Mode.Edit)
             {
+                OkIsEnabled = false;
                 for (int i = 0; i < UserData.Count; i++)
                 {
                     if (UserData[i].Name.Equals(AuthorName))
