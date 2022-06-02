@@ -8,212 +8,87 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
-        MinHeight="290"
-        MinWidth="475"
-        SizeToContent="WidthAndHeight"
+        MinHeight="250"
+        MinWidth="550"
+        Width="550"
+        Height="250"
         WindowStartupLocation="CenterScreen"
         Title="CommentWindow">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" 
-                    HorizontalAlignment="Left" 
-                    MinHeight="265"
-                    MinWidth="165"
-                    Height="Auto" 
-                    Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                    VerticalAlignment="Top" 
-                    Width="Auto" Grid.RowSpan="2">
-            <ListBox HorizontalAlignment="Left" 
-                     SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="Auto" 
-                     MinHeight="220"
-                     MinWidth="120"
-                     Width="Auto" Margin="22,22,22,22">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ListBox>
-        </StackPanel>
-        <StackPanel Grid.Column="2" 
-                    HorizontalAlignment="Left" 
-                    MinHeight="265"
-                    Height="Auto" 
-                    Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                    VerticalAlignment="Top" 
-                    MinWidth="165"
-                    Width="Auto" Grid.RowSpan="2">
-            <ListBox HorizontalAlignment="Left" 
-                     SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="Auto" 
-                     MinHeight="220"
-                     MinWidth="120"
-                     Width="Auto" Margin="22,22,22,22">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ListBox>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" 
-                    Height="Auto" 
-                    Margin="10,10,10,10" 
-                    Orientation="Horizontal"
-                    Grid.RowSpan="2" 
-                    VerticalAlignment="Top" 
-                    Width="Auto">
-            <StackPanel HorizontalAlignment="Left" 
-                    Height="Auto" 
-                    Margin="0,0,10,10" 
-                    Orientation="Vertical"
-                    Grid.RowSpan="2" 
-                    VerticalAlignment="Top" 
-                    Width="Auto">
-                <StackPanel HorizontalAlignment="Stretch" 
-                    Height="Auto" 
-                    MinHeight="61"
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    Margin="0,0,0,0" 
-                    VerticalAlignment="Stretch" 
-                    MinWidth="380"
-                    Width="Auto">
-                    <Label Content="Автор комментария:"
-               HorizontalAlignment="Left" 
-               VerticalContentAlignment="Top"
-               Margin="0,0,0,0"
-               HorizontalContentAlignment="Left"
-               FontSize="12" 
-               VerticalAlignment="Top"
-               MinHeight="25"
-               MinWidth="123"
-               Height="Auto" 
-               Width="Auto"/>
-                    <TextBox Height="Auto" TextWrapping="Wrap"
-                     TextChanged="AuthorBox_TextChanged"
-                     HorizontalAlignment="Left"
-                     Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     Margin="0,0,0,0"
-                     MinWidth="380"
-                     Width="Auto"
-                     FontSize="12"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left" 
-                    MinHeight="130"
-                    Height="Auto" 
-                    Margin="0,0,0,0" 
-                    Grid.Column="0"
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    MinWidth="420"
-                    Width="Auto">
-                    <Label Content="Kомментарий:" 
-               HorizontalAlignment="Left" 
-               Grid.Row="1"
-               Grid.Column="0"
-               VerticalContentAlignment="Top"
-               Margin="0,0,0,0"
-               HorizontalContentAlignment="Left"
-               FontSize="12" 
-               VerticalAlignment="Top" 
-                   MinWidth="123"
-                   MinHeight="25"
-               Height="Auto" 
-               Width="Auto"/>
-                <TextBox Height="Auto"
-                 MinHeight="100"
-                 TextWrapping="Wrap"
-                 AcceptsReturn="True"
-                 TextChanged="CommentBox_TextChanged"
-                 HorizontalAlignment="Left"
-                 Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                 Width="Auto"
-                 MinWidth="380"
-                 Margin="0,0,0,0"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left" 
-                    MinHeight="48"
-                    Height="Auto" 
-                    Orientation="Horizontal"
-                    FlowDirection="LeftToRight"
-                    Margin="0,0,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    MinWidth="420"
-                    Width="Auto">
-                    <Button Content="ОК"
-                    Name="OkButton"
-                    MinHeight="26"
-                    IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    IsDefault="True"
-                    Command="{Binding OKCommand}"
-                    Height="Auto"
-                    Margin="200,0,0,0"
-                    VerticalAlignment="Center"
-                    MinWidth="80"
-                    Width="Auto"/>
-                    <Button Content="Отмена"
-                    Name="CancelButton"
-                    IsCancel="True"
-                    MinHeight="26"
-                    Height="Auto"
-                    Click="CancelButton_Click"
-                    VerticalAlignment="Center"
-                    MinWidth="80" 
-                    Width="Auto"
-                    Margin="20,0,0,0"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Left" 
-                    Height="Auto" 
-                        MinHeight="255"
-                    Grid.Column="0"
-                    Margin="0,0,0,0" 
-                    Orientation="Vertical"
-                    Grid.RowSpan="2" 
-                    VerticalAlignment="Top" 
-                        MinWidth="40"
-                    Width="Auto">
-                <Button Height="Auto"
-                        MaxWidth="30"
-                        MinHeight="30"
-                        MinWidth="30"
-                        MaxHeight="30"
-                        Width="Auto"
-                        IsEnabled="{Binding ShowAuthorsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                        Command="{Binding ShowAuthorsListCommand}"
-                        Margin="0,20,0,0">
-                    <Image Source="{Binding TopButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Height="20"/>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 0">Автор</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="0" Margin="5" TextChanged="AuthorBox_TextChanged" Text="{Binding AuthorName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Button Grid.Row="1" Grid.Column="1" Margin="0 5" Padding="5" Command="{Binding ShowAuthorsListCommand}" IsEnabled="{Binding ShowAuthorsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <Image Source="{Binding TopButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="10" Width="10"/>
                 </Button>
-                <Button Width="Auto"
-                        MaxWidth="30"
-                        MinWidth="30"
-                        MinHeight="30"
-                        Height="Auto"
-                        IsEnabled="{Binding ShowCommentsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                        Command="{Binding ShowCommentsListCommand}"
-                        Margin="0,40,0,0">
-                    <Image Source="{Binding BottomButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Height="20"/>
-                </Button>
-            </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 0">Комментарий</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="0" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" TextChanged="CommentBox_TextChanged" Text="{Binding UserComment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0 5">
+                    <Button Padding="5" Command="{Binding ShowCommentsListCommand}" IsEnabled="{Binding ShowCommentsListButton,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                        <Image Source="{Binding BottomButtonIcon,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="10" Width="10"/>
+                    </Button>
+                </StackPanel >
+
+            </Grid>
+
+            <ScrollViewer x:Name="scroll_Authors" Grid.RowSpan="2" Grid.Column="1" Margin="5 25 5 5" VerticalScrollBarVisibility="Auto" Visibility="{Binding AuthorsListVisibility, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListBox MinWidth="250" SelectedIndex="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Authors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding AuthorSelectCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </ScrollViewer>
+            <ScrollViewer x:Name="scroll_Comments" Grid.RowSpan="2" Grid.Column="1" Margin="5 25 5 5" VerticalScrollBarVisibility="Auto"  Visibility="{Binding CommentsListVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ListBox MinWidth="250" SelectedIndex ="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding UserComments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding CommentSelectCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </ScrollViewer>
+
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="5" Padding="10 5" Name="OkButton" IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OKCommand}" IsDefault="True">OK</Button>
+            <Button Margin="0 5 5 5" Padding="10 5" Name="CancelButton" IsCancel="True" Click="CancelButton_Click">Cancel</Button>
         </StackPanel>
     </Grid>
 </Window>
