@@ -87,7 +87,7 @@
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Margin="5" Padding="10 5" Name="OkButton" IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OKCommand}" IsDefault="True">OK</Button>
+            <Button Margin="5" Padding="10 5" Click="OkButton_Click" Name="OkButton" IsEnabled="{Binding OkIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OKCommand}" IsDefault="True">OK</Button>
             <Button Margin="0 5 5 5" Padding="10 5" Name="CancelButton" IsCancel="True" Click="CancelButton_Click">Cancel</Button>
         </StackPanel>
     </Grid>
